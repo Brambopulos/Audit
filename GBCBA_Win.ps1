@@ -7,13 +7,14 @@
 # Correlate low frequency process commands to suspicious activities; and improper users by host to activities.
 
 Clear-Host
-$localpath = "C:\secaudit" # This is the location where the output files will drop at runtime
-$outpath = "c:\windows\temp"
+$localpath = ".\secaudit" # This is the location where the output files will drop at runtime
+$outpath = ".\temp"
 
 $logtime = (Get-Date -Uformat %s)
 
 # PREPARATION
 Invoke-Command { mkdir $localpath } -ErrorVariable errmsg 2>$null
+Invoke-Command { mkdir $temp } -ErrorVariable errmsg 2>$null
 $ErrorActionPreference = 'SilentlyContinue'
 
 # NetProcMon
